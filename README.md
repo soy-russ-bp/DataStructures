@@ -1,12 +1,9 @@
 # DataStructures
 
-# Presentación unidad 1 y 2
-<image src="https://ictea.com/cs/assets/img/knowledbase/common/java_logo.png" width="45%" height="45%" ></image>
 
-:diamonds: [Ejemplo 1](https://github.com/soy-russ-bp/DataStructures/tree/Mario-Irabien)
 
-:diamonds: [Ejemplo 2](https://github.com/soy-russ-bp/DataStructures/tree/Russel-Bonilla)
+:diamonds: source: [StackOverflow: ArrayLists of Arraylists...](https://stackoverflow.com/questions/9068940/how-does-one-access-an-arraylist-of-arraylists-generics)
 
-:diamonds: [Ejemplo 3](https://github.com/soy-russ-bp/DataStructures/tree/Mateo-Ortiz)
+:diamonds: My solution: [Here]()
 
 ---
