@@ -83,7 +83,7 @@ public class CineExample extends ArrayList<ArrayList<String>> {
     // Método principal para pruebas
     public static void main(String[] args) {
         CineExample cine = new CineExample(4, 4);
-        cine.busyChair(1,2);
+        
         cine.displayRow(1);
 
         System.out.println("displayRow done!");
@@ -91,7 +91,7 @@ public class CineExample extends ArrayList<ArrayList<String>> {
         System.out.println("displayColumn done!");
         cine.displayEntireChairs();
         System.out.println("displayEntireTable done!");
-
+        cine.busyChair(1,2);
         cine.addRow();
         cine.addRow();
         cine.displayEntireChairs();
