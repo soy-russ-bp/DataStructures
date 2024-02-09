@@ -1,81 +1,97 @@
 import java.util.ArrayList;
-import java.util.List;
+import java.util.NoSuchElementException;
 
-// Interfaz para la cola circular
-interface CircularQueue<E> {
-    boolean enqueue(E element);  
-    E dequeue();                 
-    boolean isEmpty();           
-    int size();                  
-}
+public class CircularQueue<E> {
+    private ArrayList<E> queue;
+    private int front;
+    private int rear;
+    private int size;
+    private int capacity;
 
-// Implementación de la cola circular utilizando ArrayList
-class ArrayListCircularQueue<E> implements CircularQueue<E> {
-    private List<E> queue;       
-    private int front;           
-    private int rear;            
-    private int maxSize;         
-
-    
-    public ArrayListCircularQueue(int maxSize) {
-        this.maxSize = maxSize;
-        queue = new ArrayList<>(maxSize);
-        front = 0;
-        rear = -1;
-    }
-
-   
-    @Override
-    public boolean enqueue(E element) {
-        if (size() == maxSize) {
-            return false;  // La cola está llena
+    public CircularQueue(int capacity) {
+        this.capacity = capacity;
+        this.queue = new ArrayList<>(capacity);
+        for (int i = 0; i < capacity; i++) {
+            this.queue.add(null); // Inicializar todos los elementos como nulos
         }
-        rear = (rear + 1) % maxSize;
-        queue.add(rear, element);
-        return true;
+        this.front = 0;
+        this.rear = -1;
+        this.size = 0;
     }
 
-    
-    @Override
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public boolean isFull() {
+        return size == capacity;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public void enqueue(E item) {
+        if (isFull()) {
+            throw new IllegalStateException("La cola está llena");
+        }
+        rear = (rear + 1) % capacity;
+        queue.set(rear, item);
+        size++;
+    }
+
     public E dequeue() {
         if (isEmpty()) {
-            return null;  
+            throw new NoSuchElementException("La cola está vacía");
         }
-        E removedElement = queue.remove(front);
-        rear = (rear - 1 + maxSize) % maxSize;
-        return removedElement;
+        E item = queue.get(front);
+        queue.set(front, null);
+        front = (front + 1) % capacity;
+        size--;
+        return item;
     }
 
-
-    @Override
-    public boolean isEmpty() {
-        return size() == 0;
-    }
-
-    
-    @Override
-    public int size() {
-        return (rear - front + maxSize) % maxSize + 1;
+    public E peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("La cola está vacía");
+        }
+        return queue.get(front);
     }
 
     public static void main(String[] args) {
-        CircularQueue<Integer> queue = new ArrayListCircularQueue<>(5);
+        CircularQueue<Integer> queue = new CircularQueue<>(5);
 
-        
+        // Enqueue
         queue.enqueue(1);
         queue.enqueue(2);
         queue.enqueue(3);
         queue.enqueue(4);
         queue.enqueue(5);
 
-        
-        System.out.println("La cola está llena: " + queue.enqueue(6));
-
-        
-        while (!queue.isEmpty()) {
-            System.out.println(queue.dequeue());
+        // Intentar agregar más elementos para demostrar que la cola está llena
+        try {
+            queue.enqueue(6);
+        } catch (IllegalStateException e) {
+            System.out.println("Error: " + e.getMessage());
         }
-        
-        System.out.println("La cola está vacía: " + queue.isEmpty());
+
+        // Dequeue y peek
+        System.out.println("Elemento eliminado: " + queue.dequeue());
+        System.out.println("Elemento en la parte delantera: " + queue.peek());
+
+        // Agregar un nuevo elemento después de dequeue
+        queue.enqueue(6);
+
+        // Vaciar la cola
+        while (!queue.isEmpty()) {
+            System.out.println("Elemento eliminado: " + queue.dequeue());
+        }
+
+        // Intentar eliminar de una cola vacía
+        try {
+            queue.dequeue();
+        } catch (NoSuchElementException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }
