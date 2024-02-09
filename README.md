@@ -1,6 +1,10 @@
 # DataStructures
-[Ejemplo 1]()
 
-[Ejemplo 2]()
+# Presentación unidad 1 y 2
+:diamonds: [Ejemplo 1]()
 
-[Ejemplo 3]()
+:diamonds: [Ejemplo 2]()
+
+:diamonds: [Ejemplo 3]()
+
+---
