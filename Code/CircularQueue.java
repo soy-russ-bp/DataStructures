@@ -75,6 +75,7 @@ class ArrayListCircularQueue<E> implements CircularQueue<E> {
         while (!queue.isEmpty()) {
             System.out.println(queue.dequeue());
         }
+        
         System.out.println("La cola está vacía: " + queue.isEmpty());
     }
 }
