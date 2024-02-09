@@ -8,7 +8,7 @@ public class TableMySolution extends ArrayList<ArrayList<String>> {
         for (int i = 0; i < tableLength; i++) {
             ArrayList<String> row = new ArrayList<>();
             for (int j = 0; j < tableWidth; j++) {
-                row.add("test"); // Llena cada fila con "test"
+                row.add("😎"); // Llena cada fila con "test"
             }
             this.add(row); // Añade la fila a la tabla
         }
@@ -49,6 +49,7 @@ public class TableMySolution extends ArrayList<ArrayList<String>> {
     public static void main(String[] args) {
         TableMySolution table = new TableMySolution(4, 4);
         table.displayRow(1);
+
         System.out.println("displayRow done!");
         table.displayColumn(1);
         System.out.println("displayColumn done!");
