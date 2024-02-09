@@ -1,7 +1,7 @@
 # DataStructures
 
 # Presentación unidad 1 y 2
-<image src="https://ictea.com/cs/assets/img/knowledbase/common/java_logo.png" width="45%" height="45%" ></image>
+<image src="https://ictea.com/cs/assets/img/knowledbase/common/java_logo.png"></image>
 
 :diamonds: [Ejemplo 1](https://github.com/soy-russ-bp/DataStructures/tree/Mario-Irabien)
 
