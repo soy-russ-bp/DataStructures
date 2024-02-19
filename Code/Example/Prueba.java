@@ -1,21 +1,35 @@
 package Example;
-import Solution.CircularQueue; 
+import java.util.ArrayList;
 
-    public class Prueba {
-        public static void main(String[] args) {
-            CircularQueue<Persona> colaPersonas = new CircularQueue<>(5);
+public class Prueba<T> { 
+    private ArrayList<T> lista = new ArrayList<>();
 
-            // Simulación de llegada de clientes y clientes de baja
-            colaPersonas.enqueue(new Cliente("Juan"));
-            colaPersonas.enqueue(new ClienteDeBaja("María"));
-            colaPersonas.enqueue(new Cliente("Pedro"));
-            colaPersonas.enqueue(new ClienteDeBaja("Ana"));
+    // Método para agregar un elemento a la lista
+    public void agregarElemento(T elemento) {
+        lista.add(elemento);
+    }
 
-            // Procesamiento de personas en la cola
-            while (!colaPersonas.isEmpty()) {
-                Persona persona = colaPersonas.dequeue();
-                System.out.println("Procesando " + persona);
-                // Lógica de procesamiento de persona...
-            }
+    // Método para procesar elementos en la lista
+    public void procesarElementos() {
+        // Procesamiento de elementos en la cola
+        while (!lista.isEmpty()) {
+            T elemento = lista.remove(0);
+            System.out.println("Procesando " + elemento);
+            // Lógica de procesamiento de elemento...
         }
     }
+
+    public static void main(String[] args) {
+        // Crear una instancia de Prueba con tipo Persona
+        Prueba<Persona> prueba = new Prueba<>();
+
+        // Simulación de llegada de personas a la cola
+        prueba.agregarElemento((Persona)new Cliente("Juan"));
+        prueba.agregarElemento((Persona)new ClienteDeBaja("María"));
+        prueba.agregarElemento((Persona)new Cliente("Pedro"));
+        prueba.agregarElemento((Persona)new ClienteDeBaja("Ana"));
+
+        // Procesamiento de personas en la cola
+        prueba.procesarElementos();
+    }
+}
